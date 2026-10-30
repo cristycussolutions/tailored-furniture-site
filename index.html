@@ -1075,6 +1075,29 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-h
 .hero .film-meta{flex-wrap:nowrap}
 .hero .now-showing{grid-template-columns:minmax(0,1fr)}
 
+/* ---------- hero top right: Facebook, Instagram, company profile ---------- */
+.hero-top{position:absolute;z-index:3;top:calc(88px + clamp(14px,2vw,26px));right:var(--gutter);display:flex;align-items:center;gap:8px}
+@media (min-width:1240px){.hero-top{right:calc((100vw - 1240px)/2 + var(--gutter))}}
+.hero-top .hero-profile{position:static}
+.hero-social{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 15px;border-radius:999px;
+  border:1px solid rgba(245,244,240,.45);background:rgba(15,24,21,.38);color:#F5F4F0;text-decoration:none;font-size:13.5px;font-weight:600;
+  transition:border-color .2s,background .2s}
+.hero-social:hover{border-color:#F5F4F0;background:rgba(15,24,21,.58)}
+.hero-social .hs-short{display:none}
+@media (max-width:760px){
+  .hero-top{top:calc(80px + 12px);gap:6px}
+  .hero-social{min-height:40px;padding:0 12px;font-size:12.5px}
+}
+@media (max-width:440px){
+  .hero-social{padding:0;width:40px}
+  .hero-social .hs-long{display:none}.hero-social .hs-short{display:inline}
+}
+@media (max-width:1439px){
+  .hero-social{padding:0;width:44px}
+  .hero-social .hs-long{display:none}.hero-social .hs-short{display:inline}
+}
+@media (max-width:760px){.hero-social{width:40px}}
+
 .live-note b{color:var(--ink)}.live-note.fail{color:var(--copper-text)}.live-note a{color:inherit;font-weight:600}
 .swatch em{color:#874B2B}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .swatch em{color:var(--cane)}}:root[data-theme="dark"] .swatch em{color:var(--cane)}
 </style>
@@ -1142,7 +1165,11 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-h
     })();
   </script>
   <div class="hero-scrim" aria-hidden="true"></div>
-  <a class="hero-profile" href="docs/Tailored-Furniture-Company-Profile.pdf" download="Tailored-Furniture-Company-Profile.pdf" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></svg><span class="hp-t"><b>Company profile</b><small>PDF, 4.2 MB</small></span></a>
+  <div class="hero-top">
+    <a class="hero-social" href="https://www.facebook.com/tailoredfurnph" target="_blank" rel="noopener"><span class="hs-long">Facebook</span><span class="hs-short">FB</span></a>
+    <a class="hero-social" href="https://www.instagram.com/tailoredfurnph" target="_blank" rel="noopener"><span class="hs-long">Instagram</span><span class="hs-short">IG</span></a>
+    <a class="hero-profile" href="docs/Tailored-Furniture-Company-Profile.pdf" download="Tailored-Furniture-Company-Profile.pdf" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></svg><span class="hp-t"><b>Company profile</b><small>PDF, 4.2 MB</small></span></a>
+  </div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 id="heroTitle">Made to measure for your&nbsp;home, <span class="h1-last">or your client’s.</span></h1>
