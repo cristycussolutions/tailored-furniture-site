@@ -10,6 +10,7 @@ One-page site for Tailored Furniture (custom furniture, Filipino-owned since 199
 | `site-config.js` | Where form requests are emailed (Formspree ID or Web3Forms key) |
 | `img/` | Photos and logos |
 | `media/` | Hero film: `hero-1080-lite.mp4` (large screens), `hero-720.mp4` (laptops), `hero-portrait.mp4` (phones), `.webm` fallbacks, `hero-poster.webp` (first frame, shown while the film loads) |
+| `docs/` | Company profile PDF (hero download button). Keep the file name; to update it, upload a new PDF under the same name, ideally under 5 MB |
 | `404.html` | Page shown for a wrong address |
 | `CNAME` | Added when the custom domain is connected |
 
