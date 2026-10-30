@@ -18,7 +18,7 @@ One-page site for Tailored Furniture (custom furniture, Filipino-owned since 199
 
 Every form on the page (room blueprint, Trade Program, cost per seat, office visit, worth-saving check, swatch box, consultation) emails one plain-text request to the inbox set in the form service. Photos are not attached: the confirmation screen asks the visitor to send them on Viber.
 
-To change where requests go, change the email in the Formspree (or Web3Forms) dashboard. No code change needed.
+Requests are delivered by FormSubmit (formsubmit.co) to the email in `site-config.js` (currently tailoredfurnph@gmail.com, the address in the company profile). FormSubmit needs a one-time activation: the first request sends an "Activate Form" email to that inbox, and nothing is delivered until someone clicks it. To change the inbox, change `formsubmit` in `site-config.js` and activate again from the new inbox.
 
 ## Hero film rules
 

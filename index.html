@@ -1714,7 +1714,7 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-h
 (() => {
   const C = window.TF_SITE || {};
   const has = v => !!(v && !/PASTE/i.test(v));
-  const LIVE = has(C.formspree) || has(C.formKey);
+  const LIVE = has(C.formspree) || has(C.formKey) || has(C.formsubmit);
   const INBOX = C.inbox || 'tailoredfurnph@gmail.com';
   const VIBER = C.viber || '+63 949 455 7524';
   const SOURCES = { blueprint: 'Room blueprint', trade: 'Trade Program', seat: 'Cost per seat', office: 'Office planning visit',
@@ -1756,9 +1756,18 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-h
       fd.append('name', lead.name || ''); fd.append('phone', lead.phone || '');
       if (lead.email) { fd.append('email', lead.email); fd.append('_replyto', lead.email); }
       r = await fetch('https://formspree.io/f/' + encodeURIComponent(C.formspree), { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
-    } else {
+    } else if (has(C.formKey)) {
       r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ access_key: C.formKey, subject: title, from_name: 'Tailored Furniture website', email: lead.email || undefined, replyto: lead.email || undefined, message: body }) });
+    } else {
+      /* FormSubmit: emails straight to the inbox. The first request triggers an "Activate Form" email to that inbox;
+         until someone clicks it, requests are not delivered (visitors get the email / Viber fallback instead). */
+      r = await fetch('https://formsubmit.co/ajax/' + encodeURI(C.formsubmit.trim()), { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ _subject: title, _template: 'box', _captcha: 'false', name: lead.name || '', phone: lead.phone || '',
+          email: lead.email || undefined, _replyto: lead.email || undefined, message: body }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !(j.success === true || j.success === 'true')) throw new Error('send failed: ' + (j.message || r.status));
+      return 'sent';
     }
     if (!r.ok) throw new Error('send failed ' + r.status);
     return 'sent';
