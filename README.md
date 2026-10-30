@@ -29,3 +29,16 @@ Requests are delivered by FormSubmit (formsubmit.co) to the email in `site-confi
 ## Placeholders to confirm with the client
 
 Search `index.html` for these before launch: the Fit Guarantee, the Trade Program perks, the 3-working-day blueprint turnaround (`RULES`), service areas, call times, and the example prices in the cost-per-seat and worth-saving tools.
+
+## Domain and hosting
+
+- Live at **https://tailoredfurn.com/** (GitHub Pages, set by the `CNAME` file). `www.tailoredfurn.com` redirects to it.
+- DNS is in Cloudflare (DNS only, grey cloud): four `A` and four `AAAA` records for `@` pointing to GitHub Pages, and `www` as a `CNAME` to `cristycussolutions.github.io`. HTTPS certificate is issued by GitHub; "Enforce HTTPS" is on in Settings, Pages.
+- Email safety: the domain does not send email, so it has `v=spf1 -all` and a `p=reject` DMARC record. If you ever set up email on tailoredfurn.com, replace both first.
+
+## Search and sharing
+
+- `sitemap.xml` and `robots.txt` (update `lastmod` in the sitemap when content changes)
+- Business details for Google live in the `application/ld+json` block in `index.html` (name, phone, email, service area, services). Add a street address there once the business has a public one.
+- `llms.txt`: plain facts for AI assistants. Keep it in step with the page.
+- `og-image.jpg` (1200x630): the picture shown when the link is shared.
