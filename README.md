@@ -28,4 +28,4 @@ To change where requests go, change the email in the Formspree (or Web3Forms) da
 
 ## Placeholders to confirm with the client
 
-Search `index.html` for these before launch: the Fit Guarantee, the Christmas order line, the Trade Program perks, the 3-working-day blueprint turnaround (`RULES`), service areas, call times, and the example prices in the cost-per-seat and worth-saving tools.
+Search `index.html` for these before launch: the Fit Guarantee, the Trade Program perks, the 3-working-day blueprint turnaround (`RULES`), service areas, call times, and the example prices in the cost-per-seat and worth-saving tools.
